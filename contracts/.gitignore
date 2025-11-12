@@ -1,0 +1,6 @@
+# Example .env (DO NOT INCLUDE REAL PRIVATE KEYS IN SHARED PLACES)
+BASE_RPC=https://mainnet.base.org
+DEPLOYER_PRIVATE_KEY=0xYOUR_PRIVATE_KEY_HERE
+npx hardhat compile
+# (ensure .env has DEPLOYER_PRIVATE_KEY with your private key locally)
+npx hardhat run --network base scripts/deploy.js
