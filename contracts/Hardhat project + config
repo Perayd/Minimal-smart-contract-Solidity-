@@ -1,0 +1,24 @@
+mkdir base-deploy && cd base-deploy
+npm init -y
+npm install --save-dev hardhat @nomiclabs/hardhat-ethers ethers dotenv
+npx hardhat        # choose "Create an empty hardhat.config.js" or a basic sample
+require('dotenv').config();
+require('@nomiclabs/hardhat-ethers');
+
+const BASE_RPC = process.env.BASE_RPC || "https://mainnet.base.org";
+const PRIVATE_KEY = process.env.DEPLOYER_PRIVATE_KEY || "";
+
+module.exports = {
+  solidity: "0.8.19",
+  networks: {
+    base: {
+      url: BASE_RPC,
+      chainId: 8453,
+      accounts: PRIVATE_KEY ? [PRIVATE_KEY] : [],
+      // gas, gasPrice, or etherscan settings can be added if needed
+    },
+    hardhat: {
+      // local
+    }
+  }
+};
